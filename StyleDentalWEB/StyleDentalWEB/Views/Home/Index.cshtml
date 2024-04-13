@@ -1,0 +1,242 @@
+﻿<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+
+<!-- page content -->
+<div class="right_col" role="main">
+
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12  ">
+            <div class="x_panel">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Registro Pacientes</h3>
+                        </div>
+
+
+                    </div>
+                    <div class="x_content">
+
+                        <form class="form-label-left input_mask" action="@Url.Action("","")">
+
+                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                <input type="text" name="NombreCompleto" class="form-control has-feedback-left" id="NombreCompleto" placeholder="Nombre Completo">
+                                <span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                <input type="text" name="NumeroDocumento" class="form-control" id="NumeroDocumento" placeholder="Numero de Documento">
+                                <span class="form-control-feedback" aria-hidden="true"></span>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-primary" id="btnBuscar">Buscar</button>
+                                    <button type="button" class="btn btn-secondary" data-target="#myModal" id="btnNuevo">Agregar</button>
+                                    <button type="submit" class="btn btn-success">Limpiar</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+<!--Modal-->
+<!--<!-- Modal content-->
+<!--<form class="was-validated">
+
+        </div>-->
+
+
+
+
+
+<style>
+
+    .ocultar {
+        visibility: hidden;
+    }
+</style>
+
+
+
+<!--MODAL-->
+
+<div id="myModal" class="modal " role="dialog">
+    <div class="modal-dialog modal-lg">
+        <form class="was-validated" action="@Url.Action("","")" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PERSONA</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+
+                                <label for="txtNombre1" class="form-label">Primer Nombre</label>
+                                <input type="text" id="txtNombre1" name="PrimerNombre" class="form-control" maxlength="10" minlength="3" required />
+                                <div class="invalid-feedback">
+                                    Ingresar Primer Nombre valido
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label>Segundo Nombre</label>
+                                <input type="text" id="txtNombre2" name="SegundoNombre" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label>Primer Apellido</label>
+                                <input type="text" id="txtApellido1" name="PrimerApellido" class="form-control" maxlength="15" minlength="3" required />
+                                <div class="invalid-feedback">Debe ingresar Primer Apellido valido</div>
+                            </div>
+                            <div class="col">
+                                <label>Segundo Apellido</label>
+                                <input type="text" id="txtApellido2" name="SegundoApellido" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col">
+                                <label>Tipo De Documento</label>
+                                <select id="ddlTipoDocumento" name="IdTipoDocumento" class="form-control form-select" aria-label="select example" required>
+                                    <option value="">Seleccione Tipo de Documento</option>
+                                </select>
+                                <div class="invalid-feedback">Debe seleccionar un tipo de documento</div>
+                            </div>
+
+                            <div class="col">
+                                <label>Número Documento</label>
+                                <input type="text" id="txtNumeroDocumento" name="NumeroDocumento" class="form-control" maxlength="11" required>
+                                <div class="invalid-feedback">Debe ingresar Numero de Documento valido</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label>Edad</label>
+                                <input type="text" id="txtEdad" name="Edad" class="form-control" required>
+                                <div class="invalid-feedback">Debe Edad valida</div>
+                            </div>
+                            <div class="col">
+                                <label>Fecha Nacimiento</label>
+                                <input type="text" id="txtFechaNacimiento" name="FechaNacimiento" class="form-control ui-datepicker-calendar" required>
+                                <div class="invalid-feedback">Debe ingresar fecha valida</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label>Número Celular </label>
+                                <input type="text" id="txtCelularModal" name="Celular" class="form-control" maxlength="10" required />
+                                <div class="invalid-feedback">Debe ingresar Numero Celular valido</div>
+                            </div>
+                            <div class="col">
+                                <label>Correo Electronico </label>
+                                <input type="tel" id="txtCorreoElectronicomodal" name="Email" class="form-control" minlength="6" maxlength="60" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label>Tipo De Sangre</label>
+                                <select id="ddlTipoSangre" name="IdTipoSangre" class="form-control" required>
+                                    <option value="">Seleccione Tipo de Sangre</option>
+                                </select>
+                                <div class="invalid-feedback">Debe seleccionar un tipo de sangre</div>
+                            </div>
+                            <div class="col">
+                                <label>Genero</label>
+                                <select id="ddlTipoGenero" name="IdGenero" class="form-control" required>
+                                    <option value="">Seleccione Genero</option>
+                                </select>
+                                <div class="invalid-feedback">Debe seleccionar un Genero</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label>Departamento</label>
+                                <select id="ddlDepartamento" name="IdDepartamento" class="form-control">
+                                    <option value="">Seleccione Departamento</option>
+                                </select>
+                                <div class="invalid-feedback">Debe seleccionar un Departamento</div>
+                            </div>
+                            <div class="col">
+                                <label>Ciudad</label>
+                                <select id="ddlCiudad" name="IdCiudadNacimiento" class="form-control">
+                                    <option value="">Seleccione Cudad</option>
+                                </select>
+                                <div class="invalid-feedback">Debe seleccionar una Ciudad</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <label>Direccion Vivienda</label>
+                                <input type="text" id="txtDireccion" name="DireccionVivienda" class="form-control" />
+                                <div class="invalid-feedback">Debe ingresar Direccion valida</div>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="txtId" name="Id" class="form-control ocultar" maxlength="10" minlength="3" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    1 of 2
+                                </div>
+                                <div class="col">
+                                    2 of 2
+                                </div>
+                            </div>
+                        </div>*@
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnAgregarPersona" class="btn btn-secondary">Aceptar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- /Modal -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+
+<script src="~/Scripts/Negocio/Pacientes.js"></script>
+
